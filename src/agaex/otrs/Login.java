@@ -22,6 +22,10 @@ public class Login extends Activity {
         final EditText password = (EditText) findViewById(R.id.password);
         final EditText url = (EditText) findViewById(R.id.url);
         
+        login.setText("pbj000");
+        password.setText("pbj000");
+        url.setText("172.41.1.122:9051/otrs");
+        
         btnLogin.setOnClickListener(new OnClickListener(){
         	
         	public void onClick(View v){

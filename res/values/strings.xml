@@ -2,4 +2,11 @@
 <resources>
     <string name="hello">Hello World, login!</string>
     <string name="app_name">OTRS</string>
+    <string name="type">Type:</string>
+    <string name="state">State:</string>
+    <string name="priority">Priority:</string>
+    <string name="queue">Queue:</string>
+    <string name="customer">Customer:</string>
+    <string name="owner">Owner:</string>
+    <string name="responsible">Responsible:</string>
 </resources>

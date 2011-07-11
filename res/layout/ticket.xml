@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical"
+  android:background="#FFFFFF">
+  
+  <TextView android:id="@+id/txtTicketNum"
+		  android:layout_width="fill_parent"
+		  android:layout_height="wrap_content"
+		  android:text="2010061810007519"
+		  android:gravity="center" 
+		  android:textStyle="bold" 
+		  android:textSize="16px"
+		  android:background="#000000"/>
+		  
+  <TextView android:id="@+id/ticketSubject"
+  			android:layout_height="wrap_content"
+  			android:layout_width="wrap_content"
+  			android:layout_below="@id/txtTicketNum"
+  			android:layout_alignParentLeft="true"
+  			android:paddingTop="10px"
+  			android:textStyle="bold"
+  			android:textColor="#000000"
+  			android:textSize="14px"
+  			android:text = "No problem,... is ok!" />  
+		  
+  <TextView android:id="@+id/ticketAge"
+  			android:layout_height="wrap_content"
+  			android:layout_width="wrap_content"
+  			android:layout_below="@id/txtTicketNum"
+  			android:layout_alignParentRight="true"
+  			android:paddingTop="10px"
+  			android:textStyle="bold"
+  			android:textColor="#FF7F27"
+  			android:textSize="14px"
+  			android:text = "03d 06h" />
+  			
+  <RelativeLayout android:id="@+id/ticketInfo"
+  				  android:layout_width="fill_parent"
+  				  android:layout_height="wrap_content"
+  				  android:layout_below="@id/ticketSubject"
+  				  android:gravity="center"
+  				  android:paddingTop="20px">
+  		  
+  		  <TextView android:layout_width="wrap_content" 
+  		  			android:layout_height="wrap_content" 
+  		  			android:id="@string/type" 
+  		  			android:text="Type: " 
+  		  			android:layout_alignParentLeft="true" 
+  		  			android:layout_marginLeft="60px"/>
+  		  
+  		  <TextView android:id="@+id/ticketType" 
+  		  			android:layout_width="wrap_content" 
+  		  			android:layout_height="wrap_content" 
+  		  			android:textStyle="bold" 
+  		  			android:text="default"
+  		  			android:textColor="#000000" 
+  		  			android:layout_toRightOf="@string/type" 
+  		  			android:layout_alignTop="@string/type" 
+  		  			android:layout_alignBottom="@string/type" />
+  		  
+  		  <TextView android:id="@string/state" 
+  		  			android:layout_width="wrap_content" 
+  		  			android:layout_height="wrap_content" 
+  		  			android:text="State: " 
+  		  			android:layout_below="@string/type" 
+  		  			android:layout_alignRight="@string/type" />
+  		  
+  		  <TextView android:id="@+id/ticketState" 
+  		  			android:layout_width="wrap_content" 
+  		  			android:layout_height="wrap_content" 
+  		  			android:textStyle="bold" 
+  		  			android:text="pending reminder" 
+  		  			android:textColor="#000000" 
+  		  			android:layout_toRightOf="@string/state" 
+  		  			android:layout_alignTop="@string/state" 
+  		  			android:layout_alignBottom="@string/state" />
+  		  
+  		  <TextView android:id="@string/priority" 
+  		  			android:layout_width="wrap_content" 
+  		  			android:layout_height="wrap_content" 
+  		  			android:text="Priority: " 
+  		  			android:layout_below="@string/state" 
+  		  			android:layout_alignRight="@string/state" />
+  		  
+  		  <TextView android:id="@+id/ticketPriority" 
+  		  			android:layout_width="wrap_content" 
+  		  			android:layout_height="wrap_content" 
+  		  			android:textStyle="bold" 
+  		  			android:text="4 high" 
+  		  			android:textColor="#000000" 
+  		  			android:layout_toRightOf="@string/priority" 
+  		  			android:layout_alignTop="@string/priority" 
+  		  			android:layout_alignBottom="@string/priority" />
+  		  
+  		  <TextView android:id="@string/queue" 
+  		  			android:layout_width="wrap_content" 
+  		  			android:layout_height="wrap_content" 
+  		  			android:text="Queue: " 
+  		  			android:layout_below="@string/priority" 
+  		  			android:layout_alignRight="@string/priority" />
+  		  
+  		  <TextView android:id="@string/customer" 
+  		  			android:layout_width="wrap_content" 
+  		  			android:layout_height="wrap_content" 
+  		  			android:text="Customer: " 
+  		  			android:layout_below="@string/queue" 
+  		  			android:layout_alignRight="@string/queue" />
+  		  
+  		  <TextView android:id="@string/owner" 
+  		  			android:layout_width="wrap_content" 
+  		  			android:layout_height="wrap_content" 
+  		  			android:text="Owner: " 
+  		  			android:layout_below="@string/customer" 
+  		  			android:layout_alignRight="@string/customer" />
+  		  
+  		  <TextView android:id="@+id/ticketOwner" 
+  		  			android:layout_width="wrap_content" 
+  		  			android:layout_height="wrap_content" 
+  		  			android:textStyle="bold" 
+  		  			android:text="iphone"
+  		  			android:textColor="#000000" 
+  		  			android:layout_toRightOf="@string/owner" 
+  		  			android:layout_alignTop="@string/owner" 
+  		  			android:layout_alignBottom="@string/owner" />
+  		  
+  		  <TextView android:id="@string/responsible" 
+  		  			android:layout_width="wrap_content" 
+  		  			android:layout_height="wrap_content" 
+  		  			android:text="Responsible: " 
+  		  			android:layout_below="@string/owner" 
+  		  			android:layout_alignRight="@string/owner" />
+  		  
+  		  <TextView android:id="@+id/ticketResponsible" 
+  		  			android:layout_width="wrap_content" 
+  		  			android:layout_height="wrap_content" 
+  		  			android:textStyle="bold" 
+  		  			android:text="root@localhost" 
+  		  			android:textColor="#000000" 
+  		  			android:layout_toRightOf="@string/responsible" 
+  		  			android:layout_alignTop="@string/responsible" 
+  		  			android:layout_alignBottom="@string/responsible" />
+  		  
+  		  <TextView android:id="@+id/ticketCustomer" 
+  		  			android:layout_width="wrap_content" 
+  		  			android:layout_height="wrap_content" 
+  		  			android:textStyle="bold" 
+  		  			android:text="523@company...pport.mobil" 
+  		  			android:textColor="#000000" 
+  		  			android:layout_toRightOf="@string/customer" 
+  		  			android:layout_alignTop="@string/customer" 
+  		  			android:layout_alignBottom="@string/customer" />
+  		  
+  		  <TextView android:id="@+id/ticketQueue" 
+  		  			android:layout_width="wrap_content" 
+  		  			android:layout_height="wrap_content" 
+  		  			android:textStyle="bold" 
+  		  			android:text="Postmaster" 
+  		  			android:textColor="#000000" 
+  		  			android:layout_toRightOf="@string/queue" 
+  		  			android:layout_alignTop="@string/queue" 
+  		  			android:layout_alignBottom="@string/queue" />																		
+  
+  </RelativeLayout>
+  
+  <TextView android:id="@+id/txtNoArticles"
+  			android:layout_width="fill_parent"
+  			android:layout_height="wrap_content"
+  			android:layout_below="@id/ticketInfo"
+  			android:background="#AAAAAA"
+  			android:layout_marginTop="10px"
+  			android:paddingLeft="10px"
+  			android:textColor="#FFFFFF"
+  			android:textStyle="bold"
+  			android:textSize="15px"
+  			android:text="4 Articles" />
+  			
+  <ListView android:id="@+id/lstArticle"
+          android:layout_width="fill_parent"
+		  android:layout_height="wrap_content"
+		  android:layout_below="@id/txtNoArticles"
+		  android:layout_alignParentLeft="true" />			
+  
+</RelativeLayout>

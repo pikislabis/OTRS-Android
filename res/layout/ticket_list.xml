@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    		  	android:layout_height="fill_parent" 
+    		  	android:layout_width="fill_parent" 
+    		  	android:orientation="vertical">
+
+	<View android:id="@+id/ticketPrioColor"
+				 android:layout_width="10px"
+				 android:layout_alignParentLeft="true"
+				 android:background="#FF0000" 
+				 android:layout_height="60px" />
+
+    <TextView android:id="@+id/ticketSubject"
+    			  android:layout_width="wrap_content"
+    			  android:layout_height="wrap_content"
+    			  android:textStyle="bold"
+    			  android:text="Re: subject alalal"
+    			  android:textSize="16sp"
+    			  android:layout_toRightOf="@id/ticketPrioColor"/>
+    			  
+    <TextView android:id="@+id/ticketAge"
+    			  android:layout_width="wrap_content"
+    			  android:layout_height="wrap_content"
+    			  android:textColor="#FF7F27"
+    			  android:textStyle="bold"
+    			  android:text="03d 06h"
+    			  android:textSize="16sp"
+    			  android:layout_alignParentRight="true"/>			  
+    	
+    <TextView android:id="@+id/ticketNumber"
+    			  android:layout_width="wrap_content"
+    			  android:layout_height="wrap_content"
+    			  android:layout_toRightOf="@id/ticketPrioColor"
+    			  android:layout_below="@id/ticketSubject"
+    			  android:textSize="14sp"
+    			  android:text="20100618100009124"/>
+    			  
+    <TextView android:id="@+id/ticketState"
+    		  android:layout_width="wrap_content"
+    		  android:layout_height="wrap_content"
+    		  android:text="new"
+    		  android:layout_below="@id/ticketAge"
+    		  android:textSize="14sp"
+    		  android:layout_alignParentRight="true"/>			  
+    			  
+    <TextView android:id="@+id/ticketFrom"
+    			  android:layout_width="wrap_content"
+    			  android:layout_height="wrap_content"
+    			  android:text="Han Solo han.solo@otrs.org"
+    			  android:layout_below="@id/ticketNumber"
+    			  android:textSize="14sp"
+    			  android:layout_toRightOf="@id/ticketPrioColor"/>		  		  
+    			  
+    <TextView android:id="@+id/ticketQueue"
+    			  android:layout_width="wrap_content"
+    			  android:layout_height="wrap_content"
+    			  android:text="PostMaster"
+    			  android:layout_below="@id/ticketState"
+    			  android:textSize="14sp"
+    			  android:layout_alignParentRight="true"/>		  		  
+    			  
+
+</RelativeLayout>

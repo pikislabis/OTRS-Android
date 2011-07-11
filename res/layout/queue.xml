@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  	android:orientation="vertical"
+  	android:layout_width="fill_parent"
+  	android:layout_height="fill_parent"
+  	android:background="#FFFFFF">
   
 <TextView android:id="@+id/txtQueue"
 		  android:layout_width="fill_parent"
-		  android:layout_height="wrap_content" />
+		  android:layout_height="wrap_content"
+		  android:text="Cola 3" 
+		  android:gravity="center" 
+		  android:textStyle="bold" 
+		  android:textSize="20px"
+		  android:background="#000000"/>
 		  
 <ListView android:id="@+id/lstTicket"
           android:layout_width="fill_parent"

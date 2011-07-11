@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    		  	android:layout_height="fill_parent" 
+    		  	android:layout_width="fill_parent" 
+    		  	android:orientation="vertical">
+
+	<TextView android:id="@+id/articleTypeID"
+			  android:layout_width="20px"
+			  android:layout_height="wrap_content"
+			  android:layout_alignParentLeft="true"
+			  android:textSize="13sp"
+			  android:paddingLeft="5px"
+			  android:text="1" />
+			  
+	<TextView android:id="@+id/articleSubject"
+			  android:layout_width="wrap_content"
+			  android:layout_height="wrap_content"
+			  android:layout_toRightOf="@id/articleTypeID"
+    		  android:textSize="13sp"
+    		  android:textStyle="bold"
+			  android:text="What a wonderful day! - 903" />
+	
+	<TextView android:id="@+id/articleFrom" 
+			  android:layout_width="wrap_content" 
+			  android:layout_height="wrap_content" 
+			  android:text="402@fast-company-e..." 
+			  android:textSize="13sp"
+			  android:layout_below="@+id/articleSubject" 
+			  android:layout_alignLeft="@+id/articleSubject" />
+			  
+	<TextView android:id="@+id/articleCreated"
+			  android:layout_width="wrap_content"
+			  android:layout_height="wrap_content"
+			  android:layout_alignParentRight="true"
+			  android:textColor="#FF7F27"
+			  android:textSize="13sp"
+			  android:textStyle="bold"
+			  android:text="2010-06-18 18:08" />
+			  
+	<TextView android:id="@+id/articleTo" 
+			  android:layout_width="wrap_content" 
+			  android:layout_height="wrap_content" 
+			  android:text="93@example.org" 
+			  android:layout_below="@+id/articleCreated" 
+			  android:textSize="13sp"
+			  android:layout_alignLeft="@+id/articleCreated" />		  		  
+			  		  
+
+</RelativeLayout>
