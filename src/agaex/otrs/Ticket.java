@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import agaex.otrs.json.JSON;
 import agaex.otrs.layouts.Article;
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -88,6 +89,7 @@ public class Ticket extends Activity {
 	
 	class AdaptadorArticle extends ArrayAdapter {
 		Activity context;
+		private int[] colors = new int[] {Color.WHITE, Color.GRAY};
 		
 		public AdaptadorArticle(Activity context) {
 			super(context, R.layout.ticket_list, articles);
@@ -103,6 +105,7 @@ public class Ticket extends Activity {
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
+			int colorPos = position % colors.length;
 			
 			TextView articleTypeID = (TextView) item.findViewById(R.id.articleTypeID);
 			articleTypeID.setText(articles[position].getTypeID());
@@ -114,6 +117,8 @@ public class Ticket extends Activity {
 			articleFrom.setText(articles[position].getFrom());
 			TextView articleTo = (TextView) item.findViewById(R.id.articleTo);
 			articleTo.setText(articles[position].getTo());
+			
+			item.setBackgroundColor(colors[colorPos]);
 			
 			return item;
 		}

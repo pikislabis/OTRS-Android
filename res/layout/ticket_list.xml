@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     		  	android:layout_height="fill_parent" 
     		  	android:layout_width="fill_parent" 
-    		  	android:orientation="vertical">
+    		  	android:orientation="vertical"
+    		  	android:background="#EEEEEE">
 
 	<View android:id="@+id/ticketPrioColor"
 				 android:layout_width="10px"
@@ -16,7 +17,9 @@
     			  android:textStyle="bold"
     			  android:text="Re: subject alalal"
     			  android:textSize="16sp"
-    			  android:layout_toRightOf="@id/ticketPrioColor"/>
+    			  android:layout_toRightOf="@id/ticketPrioColor"
+    			  android:textColor="#000000"
+    			  android:maxLines="1"/>
     			  
     <TextView android:id="@+id/ticketAge"
     			  android:layout_width="wrap_content"
@@ -33,7 +36,8 @@
     			  android:layout_toRightOf="@id/ticketPrioColor"
     			  android:layout_below="@id/ticketSubject"
     			  android:textSize="14sp"
-    			  android:text="20100618100009124"/>
+    			  android:text="20100618100009124"
+    			  android:textColor="#000000"/>
     			  
     <TextView android:id="@+id/ticketState"
     		  android:layout_width="wrap_content"
@@ -41,7 +45,8 @@
     		  android:text="new"
     		  android:layout_below="@id/ticketAge"
     		  android:textSize="14sp"
-    		  android:layout_alignParentRight="true"/>			  
+    		  android:layout_alignParentRight="true"
+    		  android:textColor="#000000"/>			  
     			  
     <TextView android:id="@+id/ticketFrom"
     			  android:layout_width="wrap_content"
@@ -49,7 +54,8 @@
     			  android:text="Han Solo han.solo@otrs.org"
     			  android:layout_below="@id/ticketNumber"
     			  android:textSize="14sp"
-    			  android:layout_toRightOf="@id/ticketPrioColor"/>		  		  
+    			  android:layout_toRightOf="@id/ticketPrioColor"
+    			  android:textColor="#000000"/>		  		  
     			  
     <TextView android:id="@+id/ticketQueue"
     			  android:layout_width="wrap_content"
@@ -57,7 +63,14 @@
     			  android:text="PostMaster"
     			  android:layout_below="@id/ticketState"
     			  android:textSize="14sp"
-    			  android:layout_alignParentRight="true"/>		  		  
+    			  android:layout_alignParentRight="true"
+    			  android:textColor="#000000"/>
+    			  
+    <View android:layout_width="fill_parent"
+  		  android:layout_height="1dip"
+  		  android:background="#FF888888"
+  		  android:layout_below="@id/ticketFrom"
+  		  android:layout_marginTop="5px" />			  		  		  
     			  
 
 </RelativeLayout>

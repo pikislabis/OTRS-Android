@@ -31,7 +31,7 @@ public class Login extends Activity {
         	public void onClick(View v){
         		
         		Intent intent = new Intent(Login.this, Main.class);
-				Bundle bundle = new Bundle();
+				//Bundle bundle = new Bundle();
         		
         		String cadena_conexion = "http://"+url.getText().toString()+"/json.pl";
         		cadena_conexion += "?User="+login.getText().toString()+"&Password="+password.getText().toString();
@@ -46,13 +46,13 @@ public class Login extends Activity {
                 	appState.setPassword(password.getText().toString());
                 	appState.setUrl("http://"+url.getText().toString()+"/json.pl?User="+login.getText().toString()+"&Password="+password.getText().toString()+"&Object=iPhoneObject");
                 	
-                	String data = json.getJson_array().toString();
-                	bundle.putString("DATA", data);
-    				intent.putExtras(bundle);
+                	//String data = json.getJson_array().toString();
+                	//bundle.putString("DATA", data);
+    				//intent.putExtras(bundle);
     				startActivity(intent);
                 	
         		}else
-        			Toast.makeText(Login.this, "Ha ocurrido un error.", Toast.LENGTH_SHORT).show();
+        			Toast.makeText(Login.this, "Error al iniciar sesión.", Toast.LENGTH_SHORT).show();
         	}
         	
         });

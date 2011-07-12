@@ -17,6 +17,7 @@
         </activity>
         
         <activity android:name=".Main"></activity>
+        <activity android:name=".Queue_View"></activity>
         <activity android:name=".Queue"></activity>
         <activity android:name=".Ticket"></activity>
 

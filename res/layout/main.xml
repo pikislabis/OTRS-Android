@@ -1,15 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    
-<TextView android:layout_width="fill_parent"
-		  android:layout_height="wrap_content"
-		  android:text="Colas:" />
-		  
-<ListView android:id="@+id/LstColas"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />		      
-    
-</LinearLayout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="fill_parent"
+  				android:layout_height="fill_parent"
+  				android:paddingTop="5px"
+  				android:background="#EEEEEE">
+  				
+  	<TextView android:id="@+id/txtLogged"
+  			  android:layout_width="wrap_content"
+  			  android:layout_height="wrap_content"
+  			  android:text="@string/logged"
+  			  android:layout_alignParentLeft="true"
+  			  android:layout_marginLeft="5px"/>
+  			  
+  	<TextView android:id="@+id/loginName"
+  			  android:layout_width="wrap_content"
+  			  android:layout_height="wrap_content"
+  			  android:layout_toRightOf="@id/txtLogged"
+  			  android:textColor="#FF7F27"
+  			  android:textStyle="bold"
+  			  android:layout_marginLeft="10px"
+  			  android:text="iphone" />
+  			  
+  	<View android:id="@+id/mainLine"
+  		  android:layout_width="fill_parent"
+  		  android:layout_height="1dip"
+  		  android:background="#FF888888"
+  		  android:layout_below="@id/loginName"
+  		  android:layout_marginTop="5px" />		  		  			
+  				
+  	<ImageButton android:id="@+id/mainQueueIcon"
+  				 android:src="@drawable/queue_view"
+  				 android:layout_below="@id/mainLine"
+  				 android:layout_width="wrap_content"
+  				 android:layout_height="wrap_content"
+  				 android:layout_alignParentLeft="true"
+  				 android:layout_marginLeft="20px"
+  				 android:layout_marginTop="20px"
+  				 android:onClick="queue" />
+  	
+  	<TextView android:layout_width="wrap_content"
+  			  android:layout_height="wrap_content" 
+  			  android:text="@string/queueView"  
+  			  android:layout_below="@id/mainQueueIcon" 
+  			  android:layout_alignLeft="@id/mainQueueIcon" 
+  			  android:layout_alignRight="@id/mainQueueIcon"
+  			  android:textSize="12sp"
+  			  android:maxLines="1" 
+  			  android:textColor="#000000"/>
+  	
+  	<ImageButton android:id="@+id/mainStatusIcon" 
+  				 android:src="@drawable/status_view"
+  				 android:layout_below="@id/mainLine" 
+  				 android:layout_marginLeft="20px" 
+  				 android:layout_width="wrap_content" 
+  				 android:layout_height="wrap_content" 
+  				 android:layout_marginTop="20px"
+  				 android:layout_toRightOf="@id/mainQueueIcon"
+  				 android:onClick="status" />
+  				 
+  	<TextView android:layout_width="wrap_content"
+  			  android:layout_height="wrap_content" 
+  			  android:text="@string/statusView"  
+  			  android:layout_below="@id/mainStatusIcon" 
+  			  android:layout_alignLeft="@id/mainStatusIcon" 
+  			  android:layout_alignRight="@id/mainStatusIcon"
+  			  android:textSize="12sp"
+  			  android:maxLines="1" 
+  			  android:textColor="#000000" />			 
+  				 
+  	<ImageButton android:id="@+id/mainEscallationIcon" 
+  				 android:src="@drawable/escallation_view"
+  				 android:layout_below="@id/mainLine" 
+  				 android:layout_marginLeft="20px" 
+  				 android:layout_width="wrap_content" 
+  				 android:layout_height="wrap_content" 
+  				 android:layout_marginTop="20px"
+  				 android:layout_toRightOf="@id/mainStatusIcon"
+  				 android:onClick="escallation" />
+  	
+  	<TextView android:maxLines="1" 
+  			  android:layout_width="wrap_content" 
+  			  android:text="@string/escallationView" 
+  			  android:textSize="12sp" 
+  			  android:layout_height="wrap_content" 
+  			  android:layout_below="@+id/mainEscallationIcon" 
+  			  android:layout_alignLeft="@+id/mainEscallationIcon"
+  			  android:textColor="#000000" />			 			 
+  			
+  				
+</RelativeLayout>

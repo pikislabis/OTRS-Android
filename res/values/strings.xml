@@ -9,4 +9,8 @@
     <string name="customer">Customer:</string>
     <string name="owner">Owner:</string>
     <string name="responsible">Responsible:</string>
+    <string name="logged">Logged in as:</string>
+    <string name="queueView">Queue View</string>
+    <string name="statusView">Status View</string>
+    <string name="escallationView">Escallation View</string>
 </resources>
