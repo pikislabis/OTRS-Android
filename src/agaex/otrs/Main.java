@@ -20,14 +20,25 @@ public class Main extends Activity {
 	public void queue(View v){
 		
 		Intent intent = new Intent(Main.this, Queue_View.class);
+		Bundle bundle = new Bundle();
+		bundle.putString("VIEW_TYPE", "queue");
+		intent.putExtras(bundle);
 		startActivity(intent);
 	}
 	
 	public void status(View v){
-		
+		Intent intent = new Intent(Main.this, Queue_View.class);
+		Bundle bundle = new Bundle();
+		bundle.putString("VIEW_TYPE", "state");
+		intent.putExtras(bundle);
+		startActivity(intent);
 	}
 	
 	public void escallation (View v){
-		
+		Intent intent = new Intent(Main.this, Queue_View.class);
+		Bundle bundle = new Bundle();
+		bundle.putString("VIEW_TYPE", "escalation");
+		intent.putExtras(bundle);
+		startActivity(intent);
 	}
 }

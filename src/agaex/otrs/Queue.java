@@ -29,9 +29,19 @@ public class Queue extends Activity {
 		
 		Bundle bundle = getIntent().getExtras();
 		final String queue_id = bundle.getString("QUEUE");
+		final String view_type = bundle.getString("VIEW_TYPE");
 		
 		String cadena_conexion = ((Otrs)getApplicationContext()).getUrl();
-		cadena_conexion += "&Method=QueueView&Data=%7B%22QueueID%22:"+queue_id+"%7D";
+		
+		if (view_type.equals("queue"))
+			cadena_conexion += "&Method=QueueView&Data=%7B%22QueueID%22:"+queue_id+"%7D";
+        
+        else if (view_type.equals("state"))
+        	cadena_conexion += "&Method=StatusView&Data=%7B%22Filter%22:%22"+queue_id+"%22%7D";
+        	
+        else if (view_type.equals("escalation"))
+        	cadena_conexion += "&Method=EscalationView&Data=%7B%22Filter%22:%22"+queue_id+"%22%7D";
+        
 		
 		TextView txtQueue = (TextView) findViewById(R.id.txtQueue);
 		txtQueue.setText(bundle.getString("QUEUE_NAME"));
@@ -61,12 +71,13 @@ public class Queue extends Activity {
         								((JSONObject)tickets_json.get(i)).getString("Age"),
         								((JSONObject)tickets_json.get(i)).getString("State"),
         								((JSONObject)tickets_json.get(i)).getString("Queue"),
-        								((JSONObject)tickets_json.get(i)).getString("PriorityID"),
+        								((JSONObject)tickets_json.get(i)).getString("Priority"),
         								((JSONObject)tickets_json.get(i)).getString("PriorityColor"),
         								((JSONObject)tickets_json.get(i)).getString("TicketID"),
-        								((JSONObject)tickets_json.get(i)).getString("TicketID"),
-        								((JSONObject)tickets_json.get(i)).getString("TicketID"),
-        								((JSONObject)tickets_json.get(i)).getString("Owner"));
+        								((JSONObject)tickets_json.get(i)).getString("From"),
+        								((JSONObject)tickets_json.get(i)).getString("Responsible"),
+        								((JSONObject)tickets_json.get(i)).getString("Owner"),
+        								((JSONObject)tickets_json.get(i)).getString("Type"));
         	}catch (JSONException e) {
         		Toast.makeText(Queue.this, "Ha ocurrido un error. "+e.getMessage(), Toast.LENGTH_LONG).show();
     			return;
@@ -88,13 +99,13 @@ public class Queue extends Activity {
 				bundle.putString("TICKETNUMBER", tickets[position].getTicketNumber());
 				bundle.putString("TICKETSUBJECT", tickets[position].getSubject());
 				bundle.putString("TICKETAGE", tickets[position].getAge());
-				bundle.putString("TICKETTYPE", tickets[position].getTicketID());
 				bundle.putString("TICKETSTATE", tickets[position].getState());
 				bundle.putString("TICKETPRIORITY", tickets[position].getPriority());
 				bundle.putString("TICKETQUEUE", tickets[position].getQueue());
 				bundle.putString("TICKETCUSTOMER", tickets[position].getCustomer());
 				bundle.putString("TICKETOWNER", tickets[position].getOwner());
 				bundle.putString("TICKETRESPONSIBLE", tickets[position].getResponsible());
+				bundle.putString("TICKETTYPE", tickets[position].getType());
 				
 				intent.putExtras(bundle);
 				startActivity(intent);

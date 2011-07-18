@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Queue_View extends Activity {
@@ -22,13 +23,26 @@ public class Queue_View extends Activity {
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.queue_view);
         
-        //Bundle bundle = getIntent().getExtras();
-        JSONArray data = new JSONArray();
-        
-        String cadena_conexion = ((Otrs)getApplicationContext()).getUrl();
-		cadena_conexion += "&Method=QueueView";
+        Bundle bundle = getIntent().getExtras();
+        final String view_type = bundle.getString("VIEW_TYPE");
 		
-		JSON json = new JSON(cadena_conexion);
+        String cadena_conexion = ((Otrs)getApplicationContext()).getUrl();
+        TextView txtViewType = (TextView) findViewById(R.id.viewType);
+        
+        if (view_type.equals("queue")){
+        	cadena_conexion += "&Method=QueueView";
+        	txtViewType.setText("Queues");
+        }
+        else if (view_type.equals("state")){
+        	cadena_conexion += "&Method=StatusView";
+        	txtViewType.setText("States");
+        }	
+        else if (view_type.equals("escalation")){
+        	cadena_conexion += "&Method=EscalationView";
+        	txtViewType.setText("Escalations");
+        }
+        
+        JSON json = new JSON(cadena_conexion);
 		String success = json.getResult();
 		
 		if (!success.equals("successful")){
@@ -36,21 +50,31 @@ public class Queue_View extends Activity {
 			return;
 		}
 			
-        data = json.getJson_array();
+        JSONArray data = json.getJson_array();
 		
-		final String[] colas = new String[data.length()];
-		final String[] ids = new String[data.length()];
-		
+        final String[] colas = new String[data.length()];
+        final String[] ids = new String[data.length()];
+        final String[] nrotickets = new String[data.length()];
+        final String[] nroticketsmsg = new String[data.length()];
+        
 		for (int i = 0; i < data.length(); i++){
 			
 			JSONObject queue = new JSONObject();
 			
 			try{
-				
 				queue = new JSONObject(data.get(i).toString());
-				colas[i] = queue.getString("QueueName");
-				ids[i] = queue.getString("QueueID");
 				
+				if (view_type.equals("queue")){
+					colas[i] = queue.getString("QueueName");
+					ids[i] = queue.getString("QueueID");
+				}
+				else if (view_type.equals("state") || view_type.equals("escalation")){
+					colas[i] = queue.getString("StateType");
+					ids[i] = queue.getString("FilterName");
+				}
+				
+				nrotickets[i] = queue.getString("NumberOfTickets");
+				nroticketsmsg[i] = queue.getString("NumberOfTicketsWithNewMessages");
 				
 			} catch (JSONException e) {
 				e.printStackTrace();
@@ -71,10 +95,11 @@ public class Queue_View extends Activity {
 					long arg3) {
 				
 				Intent intent = new Intent(Queue_View.this, Queue.class);
-				Bundle bundle = new Bundle();
 				
+				Bundle bundle = new Bundle();
 				bundle.putString("QUEUE", ids[arg2]);
 				bundle.putString("QUEUE_NAME", colas[arg2]);
+				bundle.putString("VIEW_TYPE", view_type);
 				
 				intent.putExtras(bundle);
 				startActivity(intent);

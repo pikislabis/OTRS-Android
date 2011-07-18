@@ -3,24 +3,28 @@ package agaex.otrs;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import agaex.otrs.json.JSON;
 import agaex.otrs.layouts.Article;
 import android.app.Activity;
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.lang.System;
 
 public class Ticket extends Activity {
 
 	private Article[] articles;
-	
+	private Article[] articles_aux;
+
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.ticket);
@@ -66,22 +70,40 @@ public class Ticket extends Activity {
 		TextView ticketResponsible = (TextView) findViewById(R.id.ticketResponsible);
 		ticketResponsible.setText(bundle.getString("TICKETRESPONSIBLE"));
 		
-		articles = new Article[tickets_json.length() - 1];
 		
-		for (int i = 1; i < tickets_json.length(); i++){
+		articles_aux = new Article[tickets_json.length()];
 		
+		int i = 0;
+		int j = 0;
+		
+		while(j < tickets_json.length()){
+			
 			try{
-				articles[i-1] = new Article(((JSONObject)tickets_json.get(i)).getString("Subject"),
-										  ((JSONObject)tickets_json.get(i)).getString("TypeID"), 
-										  ((JSONObject)tickets_json.get(i)).getString("ArticleType"), 
-										  ((JSONObject)tickets_json.get(i)).getString("From"),
-										  ((JSONObject)tickets_json.get(i)).getString("To"), 
-										  ((JSONObject)tickets_json.get(i)).getString("Created"));
+				articles_aux[i] = new Article(((JSONObject)tickets_json.get(j)).getString("Subject"),
+										  ((JSONObject)tickets_json.get(j)).getString("TypeID"), 
+										  ((JSONObject)tickets_json.get(j)).getString("ArticleType"), 
+										  ((JSONObject)tickets_json.get(j)).getString("From"),
+										  ((JSONObject)tickets_json.get(j)).getString("To"), 
+										  ((JSONObject)tickets_json.get(j)).getString("Created"),
+										  ((JSONObject)tickets_json.get(j)).getString("SenderType"));
 			}catch (JSONException e) {
 				Toast.makeText(Ticket.this, "Ha ocurrido un error. "+e.getMessage(), Toast.LENGTH_LONG).show();
 				return;
+			}catch (ClassCastException e) {
+				i--;
 			}
+			catch (Exception e) {
+				Toast.makeText(Ticket.this, "Ha ocurrido un error. "+e.getMessage(), Toast.LENGTH_LONG).show();
+				return;
+			}
+			
+			i++;
+			j++;
+			
 		}
+		
+		articles = new Article[i];
+		java.lang.System.arraycopy(articles_aux, 0, articles, 0, i);
 		
 		AdaptadorArticle adaptador = new AdaptadorArticle(this);
 		lstArticle.setAdapter(adaptador);
@@ -108,7 +130,7 @@ public class Ticket extends Activity {
 			int colorPos = position % colors.length;
 			
 			TextView articleTypeID = (TextView) item.findViewById(R.id.articleTypeID);
-			articleTypeID.setText(articles[position].getTypeID());
+			articleTypeID.setText((position + 1)+"");
 			TextView articleSubject = (TextView) item.findViewById(R.id.articleSubject);
 			articleSubject.setText(articles[position].getSubject());
 			TextView articleCreated = (TextView) item.findViewById(R.id.articleCreated);
@@ -117,6 +139,9 @@ public class Ticket extends Activity {
 			articleFrom.setText(articles[position].getFrom());
 			TextView articleTo = (TextView) item.findViewById(R.id.articleTo);
 			articleTo.setText(articles[position].getTo());
+			ImageView senderType = (ImageView) item.findViewById(R.id.articleSenderType);
+			int resId = context.getResources().getIdentifier(articles[position].getSenderType(), "drawable", "android");
+			senderType.setImageResource(resId);
 			
 			item.setBackgroundColor(colors[colorPos]);
 			

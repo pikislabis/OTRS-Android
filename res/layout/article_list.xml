@@ -12,13 +12,13 @@
 			  android:textSize="13sp"
 			  android:paddingLeft="5px"
 			  android:text="1"
-			  android:textColor="#000000" />
+			  android:textColor="#000000" />		  
 			  
 	<TextView android:id="@+id/articleSubject"
 			  android:layout_width="wrap_content"
 			  android:layout_height="wrap_content"
 			  android:layout_toRightOf="@id/articleTypeID"
-    		  android:textSize="13sp"
+    		  android:textSize="12sp"
     		  android:textStyle="bold"
 			  android:textColor="#000000"
 			  android:text="What a wonderful day! - 903"
@@ -29,12 +29,21 @@
 			  android:layout_width="wrap_content" 
 			  android:layout_height="wrap_content" 
 			  android:text="402@fast-company-e..." 
-			  android:textSize="13sp"
+			  android:textSize="11sp"
 			  android:layout_below="@+id/articleSubject" 
 			  android:textColor="#000000"
 			  android:layout_alignLeft="@+id/articleSubject"
 			  android:maxWidth="130px"
 			  android:maxLines="1" />
+			  
+	<ImageView android:id="@+id/articleSenderType"
+			   android:layout_width="wrap_content"
+			   android:layout_height="wrap_content"
+			   android:src="@drawable/customer"
+			   android:layout_alignParentLeft="true"
+			   android:layout_below="@id/articleTypeID"
+			   android:paddingLeft="5px"
+			   android:layout_alignBottom="@id/articleFrom" />		  
 			  
 	<TextView android:id="@+id/articleCreated"
 			  android:layout_width="wrap_content"
@@ -50,9 +59,10 @@
 			  android:layout_height="wrap_content" 
 			  android:text="93@example.org" 
 			  android:layout_below="@+id/articleCreated" 
-			  android:textSize="13sp"
+			  android:textSize="11sp"
 			  android:textColor="#000000"
-			  android:layout_alignLeft="@+id/articleCreated" />
+			  android:layout_alignLeft="@+id/articleCreated"
+			  android:maxLines="1" />
 			  
 	<View android:layout_width="fill_parent"
   		  android:layout_height="1dip"

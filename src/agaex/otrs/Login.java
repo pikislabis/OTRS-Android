@@ -24,7 +24,7 @@ public class Login extends Activity {
         
         login.setText("pbj000");
         password.setText("pbj000");
-        url.setText("172.41.1.122:9051/otrs");
+        url.setText("192.168.1.37:9050/otrs");
         
         btnLogin.setOnClickListener(new OnClickListener(){
         	

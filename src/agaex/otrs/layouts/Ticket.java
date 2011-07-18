@@ -14,11 +14,13 @@ public class Ticket {
 	private String customer;
 	private String responsible;
 	private String owner;
+	private String type;
 	
 	public Ticket(String subject, String ticketNumber, String from, 
 				  String age, String state, String queue, 
 				  String priority, String priorityColor, String ticketID,
-				  String customer, String resposible, String owner){
+				  String customer, String resposible, String owner,
+				  String type){
 		
 		int ageInt;
 		ageInt = Integer.parseInt(age);
@@ -35,6 +37,7 @@ public class Ticket {
 		this.customer = customer;
 		this.responsible = resposible;
 		this.owner = owner;
+		this.type = type;
 	}
 	
 	public String getSubject() {
@@ -81,4 +84,9 @@ public class Ticket {
 	public String getOwner() {
 		return owner;
 	}
+
+	public String getType() {
+		return type;
+	}
+	
 }

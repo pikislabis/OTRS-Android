@@ -8,9 +8,11 @@ public class Article {
 	private String from;
 	private String to;
 	private String created;
+	private String senderType;
 	
 	public Article(String subject, String typeID, String articleType,
-				   String from, String to, String created){
+				   String from, String to, String created,
+				   String senderType){
 		
 		this.subject = subject;
 		this.typeID = typeID;
@@ -18,6 +20,7 @@ public class Article {
 		this.from = from;
 		this.to = to;
 		this.created = created;
+		this.senderType = senderType;
 		
 	}
 
@@ -43,6 +46,10 @@ public class Article {
 
 	public String getCreated() {
 		return created;
+	}
+
+	public String getSenderType() {
+		return senderType;
 	}
 	
 }
