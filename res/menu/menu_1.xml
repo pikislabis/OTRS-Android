@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<item android:id="@+id/Mnu1Opc1" 
+		  android:title="Conexiones"
+		  android:icon="@drawable/ic_menu_laptop" />
+
+	<item android:id="@+id/Mnu1Opc2" 
+		  android:title="Salir"
+		  android:icon="@drawable/ic_menu_exit" />
+
+</menu>

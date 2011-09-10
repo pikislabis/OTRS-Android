@@ -14,18 +14,7 @@
 		  android:textStyle="bold" 
 		  android:textSize="16px"
 		  android:background="#000000"/>
-		  
-  <TextView android:id="@+id/ticketSubject"
-  			android:layout_height="wrap_content"
-  			android:layout_width="wrap_content"
-  			android:layout_below="@id/txtTicketNum"
-  			android:layout_alignParentLeft="true"
-  			android:paddingTop="10px"
-  			android:textStyle="bold"
-  			android:textColor="#000000"
-  			android:textSize="14px"
-  			android:text = "No problem,... is ok!" />  
-		  
+
   <TextView android:id="@+id/ticketAge"
   			android:layout_height="wrap_content"
   			android:layout_width="wrap_content"
@@ -36,6 +25,19 @@
   			android:textColor="#FF7F27"
   			android:textSize="14px"
   			android:text = "03d 06h" />
+ 
+  <TextView android:id="@+id/ticketSubject"
+  			android:layout_height="wrap_content"
+  			android:layout_width="wrap_content"
+  			android:layout_below="@id/txtTicketNum"
+  			android:layout_alignParentLeft="true"
+  			android:layout_toLeftOf="@id/ticketAge"
+  			android:maxLines="1"
+  			android:paddingTop="10px"
+  			android:textStyle="bold"
+  			android:textColor="#000000"
+  			android:textSize="14px"
+  			android:text = "No problem,... is ok!" />
 
   <LinearLayout android:id="@+id/ticketInfo"
   				  android:layout_width="fill_parent"
@@ -170,7 +172,7 @@
   </LinearLayout>
   
   <TextView android:id="@+id/txtNoArticles"
-  			android:layout_width="fill_parent"
+  			android:layout_width="wrap_content"
   			android:layout_height="wrap_content"
   			android:layout_below="@id/ticketInfo"
   			android:background="#AAAAAA"
@@ -179,12 +181,27 @@
   			android:textColor="#FFFFFF"
   			android:textStyle="bold"
   			android:textSize="15px"
-  			android:text="4 Articles" />
+  			android:text="4" />
+  			
+  <TextView android:id="@+id/txtStrArticles"
+  			android:layout_width="fill_parent"
+  			android:layout_height="wrap_content"
+  			android:layout_toRightOf="@id/txtNoArticles"
+  			android:layout_alignBottom="@id/txtNoArticles"
+  			android:background="#AAAAAA"
+  			android:layout_marginTop="10px"
+  			android:paddingLeft="5px"
+  			android:textColor="#FFFFFF"
+  			android:textStyle="bold"
+  			android:textSize="15px"
+  			android:text="@string/articles"/>			
   			
   <ListView android:id="@+id/lstArticle"
           android:layout_width="fill_parent"
 		  android:layout_height="wrap_content"
 		  android:layout_below="@id/txtNoArticles"
-		  android:layout_alignParentLeft="true" />			
+		  android:layout_alignParentLeft="true"
+		  android:divider="#000000"
+		  android:dividerHeight="1dip" />			
   
 </RelativeLayout>

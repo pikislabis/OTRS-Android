@@ -1,35 +1,19 @@
 package agaex.otrs;
 
+import agaex.otrs.objects.Account;
 import android.app.Application;
 
 public class Otrs extends Application {
 
-	private String login;
-	private String password;
-	private String url;
+	private Account account;
 	
-	public String getLogin() {
-		return login;
+	
+	public void setAccount(Account account){
+		this.account = account;
 	}
 	
-	public void setLogin(String login) {
-		this.login = login;
-	}
-	
-	public String getPassword() {
-		return password;
-	}
-	
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	public String getUrl() {
-		return url;
-	}
-	
-	public void setUrl(String url) {
-		this.url = url;
+	public Account getAccount() {
+		return account;
 	}
 	
 	

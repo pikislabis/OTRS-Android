@@ -16,6 +16,8 @@
 		  
 <ListView android:id="@+id/lstTicket"
           android:layout_width="fill_parent"
-		  android:layout_height="wrap_content" />		    
+		  android:layout_height="wrap_content"
+		  android:divider="#000000"
+		  android:dividerHeight="1dip" />		    
   
 </LinearLayout>

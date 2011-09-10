@@ -13,4 +13,7 @@
     <string name="queueView">Queue View</string>
     <string name="statusView">Status View</string>
     <string name="escallationView">Escallation View</string>
+    <string name="accounts">Accounts</string>
+    <string name="articles">Articles</string>
+    <string name="article">Article</string>
 </resources>

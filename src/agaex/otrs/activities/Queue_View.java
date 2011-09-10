@@ -1,9 +1,12 @@
-package agaex.otrs;
+package agaex.otrs.activities;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import agaex.otrs.Otrs;
+import agaex.otrs.R;
+//import agaex.otrs.R.menu;
 import agaex.otrs.json.JSON;
 import android.app.Activity;
 import android.content.Intent;
@@ -26,7 +29,7 @@ public class Queue_View extends Activity {
         Bundle bundle = getIntent().getExtras();
         final String view_type = bundle.getString("VIEW_TYPE");
 		
-        String cadena_conexion = ((Otrs)getApplicationContext()).getUrl();
+        String cadena_conexion = ((Otrs)getApplicationContext()).getAccount().getUrl();
         TextView txtViewType = (TextView) findViewById(R.id.viewType);
         
         if (view_type.equals("queue")){
@@ -109,5 +112,13 @@ public class Queue_View extends Activity {
 		});
 		
 	}
-	
+/*	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	//Alternativa 1
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.menu, menu);
+		return true;
+	}
+	*/
 }

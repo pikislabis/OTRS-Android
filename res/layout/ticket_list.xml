@@ -66,11 +66,10 @@
     			  
     <View android:id="@+id/ticketLine"
     	  android:layout_width="fill_parent"
-  		  android:layout_height="1dip"
-  		  android:background="#FF888888"
+  		  android:layout_height="0dip"
   		  android:layout_below="@id/ticketFrom"
   		  android:layout_marginTop="5px" />
-    
+
     <View android:layout_width="10px" 
     	  android:id="@+id/ticketPrioColor" 
     	  android:background="#FF0000" 
@@ -79,6 +78,5 @@
     	  android:layout_alignTop="@id/ticketSubject"
     	  android:layout_alignBottom="@id/ticketLine"
     	  android:layout_marginBottom="1dip" />	
-
 
 </RelativeLayout>
