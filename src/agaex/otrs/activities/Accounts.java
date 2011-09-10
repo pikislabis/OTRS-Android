@@ -3,7 +3,6 @@ package agaex.otrs.activities;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import agaex.otrs.Otrs;
 import agaex.otrs.R;
 import agaex.otrs.data.DataSQLite;
@@ -44,7 +43,7 @@ public class Accounts extends Activity {
 		final DataSQLite dbaccounts = new DataSQLite(this, "DBAccounts", null, 1);
 		
 		ListView lstAccount = (ListView) findViewById(R.id.lstAccount);
-		
+			
 		//Registramos el menu contextual.
 		registerForContextMenu(lstAccount);
 			
@@ -80,7 +79,8 @@ public class Accounts extends Activity {
 		
 		adaptador = new AdaptadorAccount(this);
 		lstAccount.setAdapter(adaptador);
-        
+        //lstAccount.setSelector(Color.BLUE);
+		
         lstAccount.setOnItemClickListener(new OnItemClickListener() {
         
 			@Override
@@ -175,10 +175,13 @@ public class Accounts extends Activity {
 
 		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
 		Intent intent_edit = new Intent(Accounts.this, NewAccount.class);
-		Intent intent_delete = new Intent(Accounts.this, Accounts.class);
+		Bundle bundle = new Bundle();
 		
 		switch (item.getItemId()) {
 			case R.id.item1:
+				bundle.putString("Account_id", accounts[info.position].getId()+"");
+				intent_edit.putExtras(bundle);
+				startActivity(intent_edit);
 				return true;
 			case R.id.item2:
 				int id = accounts[info.position].getId();
@@ -201,5 +204,7 @@ public class Accounts extends Activity {
 		}catch (Exception e) {
 			Toast.makeText(Accounts.this, "Error ."+e.getMessage(), Toast.LENGTH_SHORT).show();
 		}
+		
+		db.close();
 	}
 }

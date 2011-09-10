@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-
 import agaex.otrs.R;
 import agaex.otrs.data.DataSQLite;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +24,7 @@ public class NewAccount extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
      
+        Bundle bundle = getIntent().getExtras();
         final Button btnLogin = (Button) findViewById(R.id.BtnLogin);
         final EditText title = (EditText) findViewById(R.id.title);
         final EditText login = (EditText) findViewById(R.id.user);
@@ -31,8 +32,34 @@ public class NewAccount extends Activity {
         final EditText url = (EditText) findViewById(R.id.url);
         
         final DataSQLite dbaccounts = new DataSQLite(this, "DBAccounts", null, 1);
-		
-        btnLogin.setText("Add");
+        
+        final String id_account = bundle.getString("Account_id");
+        
+        if (id_account != null){
+        	btnLogin.setText("Update");
+        	
+        	SQLiteDatabase db = dbaccounts.getReadableDatabase();
+        	String[] args = new String[] {id_account};
+    		Cursor c = db.rawQuery(" SELECT id, login, password, url, title FROM Accounts WHERE id=? ", args);
+    		
+    		//Nos aseguramos que existe al menos un registro
+    		if (c.moveToFirst()){
+    			
+    			do {
+    				
+    				login.setText(c.getString(1));
+    				password.setText(c.getString(2));
+    				url.setText(c.getString(3));
+    				title.setText(c.getString(4));
+    				
+    			}while(c.moveToNext());
+    			
+    		}
+    		
+    		db.close();
+        }
+        else
+        	btnLogin.setText("Add");
 
         btnLogin.setOnClickListener(new OnClickListener(){
     	
@@ -64,8 +91,18 @@ public class NewAccount extends Activity {
         		//Abrimos la base de datos 'DBAccounts' en modo escritura
         		SQLiteDatabase db = dbaccounts.getWritableDatabase();
         		
-        		if (db != null){
+        		if (db != null && id_account != null){
         		
+        			ContentValues valores = new ContentValues();
+        			valores.put("login", login.getText().toString());
+        			valores.put("password", password.getText().toString());
+        			valores.put("url", url_aux);
+        			valores.put("title", title.getText().toString());
+        			String[] args = new String[]{id_account};
+        			db.update("Accounts", valores, "id=?", args);
+        			
+        		}else if(db != null){
+        			
         			//Creamos el registro a insertar como objeto ContentValues
         			ContentValues nuevoRegistro = new ContentValues();
         			
@@ -76,9 +113,9 @@ public class NewAccount extends Activity {
         			
         			db.insert("Accounts", null, nuevoRegistro);
         			
-        			db.close();
-        			
         		}
+        		
+        		db.close();
         		
         		startActivity(intent);
         	}
