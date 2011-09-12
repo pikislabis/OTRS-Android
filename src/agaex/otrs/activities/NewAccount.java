@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 public class NewAccount extends Activity {
 	
+	private String id_account;
+	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
@@ -33,9 +35,10 @@ public class NewAccount extends Activity {
         
         final DataSQLite dbaccounts = new DataSQLite(this, "DBAccounts", null, 1);
         
-        final String id_account = bundle.getString("Account_id");
-        
-        if (id_account != null){
+        if (bundle != null){
+
+        	id_account = bundle.getString("Account_id");
+        	
         	btnLogin.setText("Update");
         	
         	SQLiteDatabase db = dbaccounts.getReadableDatabase();
