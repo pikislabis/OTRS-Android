@@ -8,11 +8,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DataSQLite extends SQLiteOpenHelper {
 
 	String sqlCreate = "CREATE TABLE Accounts (id INTEGER PRIMARY KEY, title TEXT, url TEXT, login TEXT, password TEXT)";
-	
+
 	public DataSQLite(Context context, String name, CursorFactory factory, int version) {
 		super(context, name, factory, version);
 	}
-	
+
 	@Override
 	public void onCreate(SQLiteDatabase arg0) {
 		arg0.execSQL(sqlCreate);

@@ -18,16 +18,16 @@ public class Ticket {
 	private String responsible;
 	private String owner;
 	private String type;
-	
-	public Ticket(String subject, String ticketNumber, String from, 
-				  String age, String state, String queue, 
+
+	public Ticket(String subject, String ticketNumber, String from,
+				  String age, String state, String queue,
 				  String priority, String priorityColor, String ticketID,
 				  String customer, String resposible, String owner,
 				  String type){
-		
+
 		int ageInt;
 		ageInt = Integer.parseInt(age);
-		
+
 		this.age = (ageInt/86400)+"d "+((ageInt%86400)/3600)+"h";
 		this.subject = subject;
 		this.ticketNumber = ticketNumber;
@@ -42,11 +42,11 @@ public class Ticket {
 		this.owner = owner;
 		this.type = type;
 	}
-	
+
 	public Ticket (JSONObject json) throws JSONException {
 		deserializeFromObj(json);
 	}
-	
+
 	public String getSubject() {
 		return subject;
 	}
@@ -87,7 +87,7 @@ public class Ticket {
 	public String getResponsible() {
 		return responsible;
 	}
-	
+
 	public String getOwner() {
 		return owner;
 	}
@@ -95,12 +95,12 @@ public class Ticket {
 	public String getType() {
 		return type;
 	}
-	
+
 	private void deserializeFromObj (JSONObject json) throws JSONException {
-		
+
 		int ageInt;
 		ageInt = Integer.parseInt(json.getString("Age"));
-		
+
 		this.subject = json.getString("Subject");
 		this.ticketNumber = json.getString("TicketNumber");
 		this.from = json.getString("From");
@@ -114,7 +114,7 @@ public class Ticket {
 		this.responsible = json.getString("Responsible");
 		this.owner = json.getString("Owner");
 		this.type = json.getString("Type");
-		
+
 	}
-	
+
 }

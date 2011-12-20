@@ -28,27 +28,27 @@ public class Ticket extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.ticket);
-     
+
         Bundle bundle = getIntent().getExtras();
 		final String ticket_id = bundle.getString("TICKETID");
-		
+
 		String cadena_conexion = ((Otrs)getApplicationContext()).getAccount().getUrl();
 		cadena_conexion += "&Method=ArticleGet&Data=%7B%22TicketID%22:"+ticket_id+"%7D";
-		
+
 		ListView lstArticle = (ListView) findViewById(R.id.lstArticle);
-		
+
 		JSON json = new JSON(cadena_conexion);
 		String success = json.getResult();
-		
+
 		final JSONArray tickets_json = json.getJson_array();
-		
+
 		if (!success.equals("successful")){
-		
+
 			Toast.makeText(Ticket.this, "Ha ocurrido un error.", Toast.LENGTH_LONG).show();
 			return;
-			
+
 		}
-		
+
 		TextView ticketNumber = (TextView) findViewById(R.id.txtTicketNum);
 		ticketNumber.setText(bundle.getString("TICKETNUMBER"));
 		TextView ticketSubject = (TextView) findViewById(R.id.ticketSubject);
@@ -56,7 +56,7 @@ public class Ticket extends Activity {
 		TextView ticketAge = (TextView) findViewById(R.id.ticketAge);
 		ticketAge.setText(bundle.getString("TICKETAGE"));
 		TextView ticketType = (TextView) findViewById(R.id.ticketType);
-		ticketType.setText(bundle.getString("TICKETTYPE"));	
+		ticketType.setText(bundle.getString("TICKETTYPE"));
 		TextView ticketState = (TextView) findViewById(R.id.ticketState);
 		ticketState.setText(bundle.getString("TICKETSTATE"));
 		TextView ticketPriority = (TextView) findViewById(R.id.ticketPriority);
@@ -69,19 +69,19 @@ public class Ticket extends Activity {
 		ticketOwner.setText(bundle.getString("TICKETOWNER"));
 		TextView ticketResponsible = (TextView) findViewById(R.id.ticketResponsible);
 		ticketResponsible.setText(bundle.getString("TICKETRESPONSIBLE"));
-		
-		
+
+
 		articles_aux = new Article[tickets_json.length()];
-		
+
 		int i = 0;
 		int j = 0;
-		
+
 		while(j < tickets_json.length()){
-			
+
 			try{
-				
+
 				articles_aux[i] = new Article((JSONObject)tickets_json.get(j));
-				
+
 			}catch (JSONException e) {
 				Toast.makeText(Ticket.this, "Ha ocurrido un error. "+e.getMessage(), Toast.LENGTH_LONG).show();
 				return;
@@ -92,42 +92,42 @@ public class Ticket extends Activity {
 				Toast.makeText(Ticket.this, "Ha ocurrido un error. "+e.getMessage(), Toast.LENGTH_LONG).show();
 				return;
 			}
-			
+
 			i++;
 			j++;
-			
+
 		}
-		
+
 		articles = new Article[i];
 		java.lang.System.arraycopy(articles_aux, 0, articles, 0, i);
-		
+
 		TextView txtNoArticles = (TextView) findViewById(R.id.txtNoArticles);
 		txtNoArticles.setText(articles.length+"");
-		
+
 		TextView txtStrArticles = (TextView) findViewById(R.id.txtStrArticles);
-		
+
 		if (articles.length > 1)
 			txtStrArticles.setText(R.string.articles);
 		else
 			txtStrArticles.setText(R.string.article);
-		
+
 		AdaptadorArticle adaptador = new AdaptadorArticle(this);
 		lstArticle.setAdapter(adaptador);
 	}
-	
+
 	@SuppressWarnings("rawtypes")
 	class AdaptadorArticle extends ArrayAdapter {
 		Activity context;
 		private int[] colors = new int[] {Color.WHITE, Color.GRAY};
-		
+
 		@SuppressWarnings("unchecked")
 		public AdaptadorArticle(Activity context) {
 			super(context, R.layout.article_list, articles);
 			this.context = context;
 		}
-		
+
 		public View getView(int position, View convertView, ViewGroup parent){
-			
+
 			LayoutInflater inflater = context.getLayoutInflater();
 			View item = new View(context);
 			try{
@@ -136,7 +136,7 @@ public class Ticket extends Activity {
 				e.printStackTrace();
 			}
 			int colorPos = position % colors.length;
-			
+
 			TextView articleTypeID = (TextView) item.findViewById(R.id.articleTypeID);
 			articleTypeID.setText((position + 1)+"");
 			TextView articleSubject = (TextView) item.findViewById(R.id.articleSubject);
@@ -150,13 +150,13 @@ public class Ticket extends Activity {
 			ImageView senderType = (ImageView) item.findViewById(R.id.articleSenderType);
 			int resId = context.getResources().getIdentifier(articles[position].getSenderType(), "drawable", "android");
 			senderType.setImageResource(resId);
-			
+
 			item.setBackgroundColor(colors[colorPos]);
-			
+
 			return item;
 		}
 	}
-/*	
+/*
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 	//Alternativa 1
@@ -164,5 +164,5 @@ public class Ticket extends Activity {
 		inflater.inflate(R.menu.menu, menu);
 		return true;
 	}
-*/	
+*/
 }
