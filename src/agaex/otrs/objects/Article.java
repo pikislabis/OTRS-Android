@@ -4,7 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Article {
-	
+
 	private String subject;
 	private String typeID;
 	private String articleType;
@@ -12,11 +12,11 @@ public class Article {
 	private String to;
 	private String created;
 	private String senderType;
-	
+
 	public Article(String subject, String typeID, String articleType,
 				   String from, String to, String created,
 				   String senderType){
-		
+
 		this.subject = subject;
 		this.typeID = typeID;
 		this.articleType = articleType;
@@ -24,9 +24,9 @@ public class Article {
 		this.to = to;
 		this.created = created;
 		this.senderType = senderType;
-		
+
 	}
-	
+
 	public Article(JSONObject json) throws JSONException {
 		deserializeFromObj(json);
 	}
@@ -58,9 +58,9 @@ public class Article {
 	public String getSenderType() {
 		return senderType;
 	}
-	
+
 	private void deserializeFromObj (JSONObject json) throws JSONException {
-		
+
 		this.subject =  json.getString("Subject");
 		this.typeID = json.getString("TypeID");
 		this.articleType = json.getString("ArticleType");
@@ -68,7 +68,7 @@ public class Article {
 		this.to = json.getString("To");
 		this.created = json.getString("Created");
 		this.senderType = json.getString("SenderType");
-		
+
 	}
-	
+
 }

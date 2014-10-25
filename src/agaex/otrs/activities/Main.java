@@ -16,21 +16,21 @@ public class Main extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
+
         String login = ((Otrs)getApplicationContext()).getAccount().getLogin();
         TextView txtLogin = (TextView)findViewById(R.id.loginName);
         txtLogin.setText(login);
 	}
-	
+
 	public void queue(View v){
-		
+
 		Intent intent = new Intent(Main.this, Queue_View.class);
 		Bundle bundle = new Bundle();
 		bundle.putString("VIEW_TYPE", "queue");
 		intent.putExtras(bundle);
 		startActivity(intent);
 	}
-	
+
 	public void status(View v){
 		Intent intent = new Intent(Main.this, Queue_View.class);
 		Bundle bundle = new Bundle();
@@ -38,7 +38,7 @@ public class Main extends Activity {
 		intent.putExtras(bundle);
 		startActivity(intent);
 	}
-	
+
 	public void escallation (View v){
 		Intent intent = new Intent(Main.this, Queue_View.class);
 		Bundle bundle = new Bundle();
@@ -46,7 +46,7 @@ public class Main extends Activity {
 		intent.putExtras(bundle);
 		startActivity(intent);
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 	//Alternativa 1
@@ -54,7 +54,7 @@ public class Main extends Activity {
 		inflater.inflate(R.menu.menu_1, menu);
 		return true;
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {

@@ -23,35 +23,35 @@ public class JSON {
 	private JSONArray json_array;
 
 	public JSON(String cadena_conexion) {
-		super();	
+		super();
 		this.cadena_conexion = cadena_conexion;
-		
+
 		HttpClient httpclient = new DefaultHttpClient();
-		         
+
         try {
-        	
-        	HttpGet httpget = new HttpGet(this.cadena_conexion); 
+
+        	HttpGet httpget = new HttpGet(this.cadena_conexion);
 
             HttpResponse response;
-        	
+
             response = httpclient.execute(httpget);
-            
+
             HttpEntity entity = response.getEntity();
-            
+
             if (entity != null) {
- 
+
                 InputStream instream = entity.getContent();
                 String result = convertStreamToString(instream);
-                
+
                 this.json = new JSONObject(result);
-                
+
                 this.result = json.getString("Result");
                 this.json_array = json.getJSONArray("Data");
-                
+
                 instream.close();
-               
+
             }
-                
+
         } catch (ClientProtocolException e) {
         	e.printStackTrace();
             this.result = "Fail: "+e.toString();
@@ -67,7 +67,7 @@ public class JSON {
 		}
 
 	}
-	
+
 	public String getCadena_conexion() {
 		return cadena_conexion;
 	}
@@ -109,7 +109,7 @@ public class JSON {
          */
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         StringBuilder sb = new StringBuilder();
- 
+
         String line = null;
         try {
             while ((line = reader.readLine()) != null) {
@@ -126,5 +126,5 @@ public class JSON {
         }
         return sb.toString();
     }
-	
+
 }
